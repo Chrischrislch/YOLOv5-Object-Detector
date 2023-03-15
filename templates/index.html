@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      body {
+        background-image: url('../static/wallpaper.jpg');
+      }
+      </style>
+    <title>Yolov5</title>
+  </head>
+  <body class="text-center">
+    <h2 class="h2 mb-3 font-weight-normal">Yolov5 Object Detector</h2>
+    <img class="mb-4" src="/static/ICON.png" alt="" width="200" />
+
+    <div class="height-100 d-flex justify-content-center align-items-center">
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        Upload
+      </button>
+      <!-- Modal -->
+    </div>
+    <form class="form-signin" method=post enctype=multipart/form-data>
+
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Uploading a new photo
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p class="body-desc">
+              Currently we only support JPG, JPEG, PNG and BMP files.
+            </p>
+            <div class="photo-input">
+              <input type="file" name="file" class="form-control-file" id="inputimg">
+            </div>
+          </div>
+        <button class="btn btn-success" type="submit">Process</button>
+
+          <div class="modal-footer">
+            <p class="footer-title">
+              If you're having problems uploading, try choosing another files.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </form>
+    <script type="text/javascript">
+      $("#inputimg").bind("change", function () {
+        let fileSize = this.files[0].size / 1024 / 1024; // this gives in MB
+        if (fileSize > 5) {
+          $("#inputimg").val(null);
+          alert("file is too big. images more than 5MB are not allowed");
+          return;
+        }
+      });
+    </script>
+    <!-- Upload  -->
+  </body>
+</html>
